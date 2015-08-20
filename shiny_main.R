@@ -1,5 +1,6 @@
 rm(list=ls())
 
+# Set working directory
 setwd("~/Documents/Muenster/Praktikum/ally")
 
 source('ShinyApp/getData.R')

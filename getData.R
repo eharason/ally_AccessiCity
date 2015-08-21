@@ -18,21 +18,23 @@ stops <- read.delim(textConnection(getURL(paste(url.Fix, "stops.txt", sep=""))),
 transfers <- read.delim(textConnection(getURL(paste(url.Fix, "transfers.txt", sep=""))), sep = ",")
 trips <- read.delim(textConnection(getURL(paste(url.Fix, "trips.txt", sep=""))), sep = ",")
 
-
+# Join dataframes "stops", "stop_times", "trips", & "routes" by common ids. 
 data.AccessiCity <- join(stops, stop_times, by="stop_id", match = "first")
 data.AccessiCity <- join(data.AccessiCity, trips, by="trip_id")
 data.AccessiCity <- join(data.AccessiCity, routes, by="route_id")
 
-selectedColumns <- c("stop_id", "stop_desc", "stop_lat", "stop_lon", "stop_name",
-                     "wheelchair_boarding","route_type" )
+# View only relevant columns
+selectedColumns <- c("stop_id", "stop_desc", "stop_lat", "stop_lon", 
+                     "stop_name", "wheelchair_boarding","route_type" )
 
-data.AccessiCity <- data.AccessiCity[, 
-                                     colnames(data.AccessiCity) %in% selectedColumns]
+# Shrink dataset to what is used for task
+data.AccessiCity <- data.AccessiCity[, colnames(data.AccessiCity) %in% 
+                                       selectedColumns]
 
-
+# Omit NA values
 data.AccessiCity <- na.omit(data.AccessiCity)
 
-
+# Declare route types by number, assign string
 setRouteType <- function(route_type){
   if(route_type==0) route_type= "Light rail"
   else if(route_type==1) route_type= "Subway"
@@ -47,10 +49,13 @@ setRouteType <- function(route_type){
   route_type
 }
 
+# Vectorize to apply function to all route_types, not just first 
 setRouteType.V <- Vectorize(setRouteType)
 
+# Attach to dataset
 data.AccessiCity$route_type <- setRouteType.V(data.AccessiCity$route_type)
 
+# Final dataset for AccessiCity
 data.AccessiCity
 
 }

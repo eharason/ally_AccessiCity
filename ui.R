@@ -3,13 +3,13 @@ library(leaflet)
 library(sp)
 
 
-# Define UI for application that draws a histogram
+# Define UI for AccessiCity that draws a map
 shinyUI(fluidPage(
   
   # Application title
   titlePanel("AccessiCity for Mexico City's General Transit Network"),
   
-  # Sidebar with a slider input for the number of bins
+  # Sidebar with a checkbox and drop-down menu
   sidebarLayout(
     sidebarPanel(
       selectInput("RouteType", label = h3("Select Transit Type"), 
@@ -18,10 +18,9 @@ shinyUI(fluidPage(
                   selected = "Subway"),
       checkboxInput("WheelchairAccessible", label = "Wheelchair Accessible", 
                     value = FALSE)
-
     ),
     
-    # Show a plot of the generated distribution
+    # View map on right side of the page
     mainPanel(
       leafletOutput("mymap")
     )

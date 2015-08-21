@@ -5,7 +5,7 @@ library(sp)
 
 # Define UI for AccessiCity that draws a map
 shinyUI(fluidPage(
-  
+
   # Application title
   titlePanel("AccessiCity for Mexico City's General Transit Network"),
   

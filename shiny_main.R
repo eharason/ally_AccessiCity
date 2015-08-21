@@ -1,7 +1,7 @@
 ### main file to run AccessiCity ShiyApp
 
 rm(list=ls())
-
+ 
 # Set working directory
 setwd("~/Documents/Muenster/Praktikum/ally")
 

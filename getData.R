@@ -3,7 +3,7 @@ library(foreign)
 library(plyr)
 
 getData <- function(){
-  
+
 # Get Data from Github
 url.Fix <- "https://raw.githubusercontent.com/allyapp/GTFS-viz/master/data/"
 

@@ -11,8 +11,8 @@ Therefore, users concerned with wheelchair boarding accessibility at public tran
 <li>Click on the individual stops (points) to view the names of the stops </li>
 <li>View a polygon that visualizes the extent of coverage for regular and accessible (for wheelchair boarding) public transit stops within the city </li>
 </ol>
+<br>
 
 Access the app using the following link:
 
 https://eharason.shinyapps.io/ShinyApp
-
